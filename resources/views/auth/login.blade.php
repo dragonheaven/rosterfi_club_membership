@@ -1,35 +1,77 @@
 @extends('layouts.access')
 
-@section('content')
-    <div class="container" id="login-form">
-        <div class="card card-container" style="height: auto">
-            <h2>Sign in to your account</h2>
-            <br>
-            <form class="form-signin" role="form" method="POST" action="{{ url('/login') }}">
-                {{ csrf_field() }}
+@section('title')
+    Login
+@endsection
 
-                <div class="form-group">
-                    <input type="email" id="inputEmail" class="form-control{{ $errors->has('email') ? ' has-error' : '' }}" name="email" placeholder="Email address" autofocus>
-                    @if ($errors->has('email'))
-                        <span class="help-block">
+@section('content')
+    <div class="content">
+        <!-- BEGIN LOGIN FORM -->
+        <form class="login-form" action="{{url('/login')}}" method="post">
+            {{ csrf_field() }}
+            <h3 class="form-title">Login to your account</h3>
+            <div class="alert alert-danger display-hide">
+                <button class="close" data-close="alert"></button>
+                <span> Enter any username and password. </span>
+            </div>
+            <div class="form-group">
+                <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                <label class="control-label visible-ie8 visible-ie9{{ $errors->has('email') ? ' has-error' : '' }}">Email</label>
+                <div class="input-icon">
+                    <i class="fa fa-envelope"></i>
+                    <input class="form-control placeholder-no-fix" type="text" name="email" placeholder="Email" value="{{old('email')}}" />
+                </div>
+                @if ($errors->has('email'))
+                    <span class="help-block">
                             <strong>{{ $errors->first('email') }}</strong>
                         </span>
-                    @endif
+                @endif
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9{{ $errors->has('password') ? ' has-error' : '' }}">Password</label>
+                <div class="input-icon">
+                    <i class="fa fa-lock"></i>
+                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" name="password" />
                 </div>
-                <div class="form-group">
-                    <input type="password" id="inputPassword" class="form-control{{ $errors->has('password') ? ' has-error' : '' }}" name="password" placeholder="Password">
-                    @if ($errors->has('password'))
-                        <span class="help-block">
+                @if ($errors->has('password'))
+                    <span class="help-block">
                             <strong>{{ $errors->first('password') }}</strong>
                         </span>
-                    @endif
-                </div>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
-                <hr class="separator-login">
-                <a href="{{ url('/password/reset') }}">Forgot your password?</a>
-            </form>
-        </div>
-        <h2 class="sign-now">Don’t have an account yet?
-            <span><a href="/register" class="no-decoration">Sign Up</a></span></h2>
+                @endif
+            </div>
+            <div class="form-actions">
+                <label class="checkbox">
+                    <input type="checkbox" name="remember" value="1" /> Remember me </label>
+                <button type="submit" class="btn green pull-right"> Login </button>
+            </div>
+            <div class="login-options">
+                <h4>Or login with</h4>
+                <ul class="social-icons">
+                    <li>
+                        <a class="facebook" data-original-title="facebook" href="{{url('/social/facebook')}}"> </a>
+                    </li>
+                    <li>
+                        <a class="twitter" data-original-title="Twitter" href="{{url('/social/twitter')}}"> </a>
+                    </li>
+                    <li>
+                        <a class="googleplus" data-original-title="Goole Plus" href="{{url('/social/google')}}"> </a>
+                    </li>
+                    <li>
+                        <a class="linkedin" data-original-title="Linkedin" href="{{url('/social/linkedin')}}"> </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="forget-password">
+                <h4>Forgot your password ?</h4>
+                <p> no worries, click
+                    <a href="{{url('/password/reset')}}" id="forget-password"> here </a> to reset your password. </p>
+            </div>
+            <div class="create-account">
+                <p> Don't have an account yet ?&nbsp;
+                    <a href="{{url('/register')}}" id="register-btn"> Create an account </a>
+                </p>
+            </div>
+        </form>
+        <!-- END LOGIN FORM -->
     </div>
 @endsection

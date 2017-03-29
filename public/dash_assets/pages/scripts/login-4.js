@@ -6,7 +6,7 @@ var Login = function () {
 	            errorClass: 'help-block', // default input error message class
 	            focusInvalid: false, // do not focus the last invalid input
 	            rules: {
-	                username: {
+	                email: {
 	                    required: true
 	                },
 	                password: {
@@ -19,7 +19,7 @@ var Login = function () {
 
 	            messages: {
 	                username: {
-	                    required: "Username is required."
+	                    required: "Email is required."
 	                },
 	                password: {
 	                    required: "Password is required."
@@ -110,15 +110,15 @@ var Login = function () {
 	            }
 	        });
 
-	        jQuery('#forget-password').click(function () {
-	            jQuery('.login-form').hide();
-	            jQuery('.forget-form').show();
-	        });
-
-	        jQuery('#back-btn').click(function () {
-	            jQuery('.login-form').show();
-	            jQuery('.forget-form').hide();
-	        });
+	        // jQuery('#forget-password').click(function () {
+	        //     jQuery('.login-form').hide();
+	        //     jQuery('.forget-form').show();
+	        // });
+            //
+	        // jQuery('#back-btn').click(function () {
+	        //     jQuery('.login-form').show();
+	        //     jQuery('.forget-form').hide();
+	        // });
 
 	}
 
@@ -127,15 +127,15 @@ var Login = function () {
 		        function format(state) {
             if (!state.id) { return state.text; }
             var $state = $(
-             '<span><img src="../assets/global/img/flags/' + state.element.value.toLowerCase() + '.png" class="img-flag" /> ' + state.text + '</span>'
+             '<span><img src="../img/state_flags/' + state.element.value.toLowerCase() + '.png" class="img-flag" /> ' + state.text + '</span>'
             );
             
             return $state;
         }
 
-        if (jQuery().select2 && $('#country_list').size() > 0) {
-            $("#country_list").select2({
-	            placeholder: '<i class="fa fa-map-marker"></i>&nbsp;Select a Country',
+        if (jQuery().select2 && $('#state_list').size() > 0) {
+            $("#state_list").select2({
+	            placeholder: '<i class="fa fa-map-marker"></i>&nbsp;Select a state',
 	            templateResult: format,
                 templateSelection: format,
                 width: 'auto', 
@@ -145,22 +145,25 @@ var Login = function () {
 	        });
 
 
-	        $('#country_list').change(function() {
-	            $('.register-form').validate().element($(this)); //revalidate the chosen dropdown value and show error or success message for the input
+	        $('#state_list').change(function() {
+	            $('.reg-form').validate().element($(this)); //revalidate the chosen dropdown value and show error or success message for the input
 	        });
     	}
 
 
-         $('.register-form').validate({
+         $('.reg-form').validate({
 	            errorElement: 'span', //default input error message container
 	            errorClass: 'help-block', // default input error message class
 	            focusInvalid: false, // do not focus the last invalid input
 	            ignore: "",
 	            rules: {
 	                
-	                fullname: {
+	                first_name: {
 	                    required: true
 	                },
+					last_name: {
+	                	required: true
+					},
 	                email: {
 	                    required: true,
 	                    email: true
@@ -171,17 +174,19 @@ var Login = function () {
 	                city: {
 	                    required: true
 	                },
-	                country: {
+	                state: {
 	                    required: true
 	                },
-
-	                username: {
-	                    required: true
-	                },
+					zip: {
+	                	required: true
+					},
+					phone: {
+	                	required: true
+					},
 	                password: {
 	                    required: true
 	                },
-	                rpassword: {
+                    password_confirmation: {
 	                    equalTo: "#register_password"
 	                },
 
@@ -225,24 +230,24 @@ var Login = function () {
 	            }
 	        });
 
-			$('.register-form input').keypress(function (e) {
+			$('.reg-form input').keypress(function (e) {
 	            if (e.which == 13) {
-	                if ($('.register-form').validate().form()) {
-	                    $('.register-form').submit();
+	                if ($('.reg-form').validate().form()) {
+	                    $('.reg-form').submit();
 	                }
 	                return false;
 	            }
 	        });
 
-	        jQuery('#register-btn').click(function () {
-	            jQuery('.login-form').hide();
-	            jQuery('.register-form').show();
-	        });
-
-	        jQuery('#register-back-btn').click(function () {
-	            jQuery('.login-form').show();
-	            jQuery('.register-form').hide();
-	        });
+	        // jQuery('#register-btn').click(function () {
+	        //     jQuery('.login-form').hide();
+	        //     jQuery('.register-form').show();
+	        // });
+            //
+	        // jQuery('#register-back-btn').click(function () {
+	        //     jQuery('.login-form').show();
+	        //     jQuery('.register-form').hide();
+	        // });
 	}
     
     return {
@@ -255,10 +260,10 @@ var Login = function () {
 
             // init background slide images
 		    $.backstretch([
-		        "../assets/pages/media/bg/1.jpg",
-		        "../assets/pages/media/bg/2.jpg",
-		        "../assets/pages/media/bg/3.jpg",
-		        "../assets/pages/media/bg/4.jpg"
+		        "../dash_assets/pages/media/bg/1.jpg",
+		        "../dash_assets/pages/media/bg/2.jpg",
+		        "../dash_assets/pages/media/bg/3.jpg",
+		        "../dash_assets/pages/media/bg/4.jpg"
 		        ], {
 		          fade: 1000,
 		          duration: 8000

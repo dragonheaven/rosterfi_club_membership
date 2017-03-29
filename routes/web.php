@@ -11,10 +11,14 @@
 |
 */
 
-Route::get('/', function () { return view('home'); })->middleware('guest');
+Route::get('/home', function() {
+    return Redirect::to('/');
+});
+
+Route::get('/', function () { return view('home'); });
 Auth::routes();
 Route::get('/validate-email', function () { return view('auth/validate_email'); });
-Route::get('/validate/{id}/{email_validation}', 'AccountController@validateemail');
+Route::get('/validate/{id}/{emailValidation}', 'AccountController@validateemail');
 
 Route::group(['middleware' => ['app']], function () {
     Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
@@ -57,3 +61,8 @@ Route::get('/configclub', function () {
 Route::get('/configevent', function () {
    return view('event/configevent')->with('page', 'events');
 });
+
+
+
+Route::get('/social/{provider}', 'AccountController@redirectToProvider');
+Route::get('/social/{provider}/callback', 'AccountController@handleProviderCallback');

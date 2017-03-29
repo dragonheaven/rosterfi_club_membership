@@ -2,30 +2,36 @@
 
 <!-- Main Content -->
 @section('content')
-    <div class="container" id="login-form">
-        <div class="card card-container" style="height: auto">
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
-            <h2>Reset Password</h2>
-            <br>
-            <form class="form-signin" role="form" method="POST" action="{{ url('/password/email') }}">
-                {{ csrf_field() }}
 
-                <div class="form-group">
-                    <input id="email" type="email" placeholder="Email Address" class="form-control{{ $errors->has('email') ? ' has-error' : '' }}" name="email" value="{{ old('email') }}">
-                    @if ($errors->has('email'))
-                        <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                    @endif
+    <div class="content">
+        <!-- BEGIN FORGOT PASSWORD FORM -->
+        @if (session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+        <form class="forget-form" action="{{ url('/password/email') }}" method="post">
+            {{ csrf_field() }}
+            <h3>Forget Password ?</h3>
+            <p> Enter your e-mail address below to reset your password. </p>
+            <div class="form-group">
+                <div class="input-icon">
+                    <i class="fa fa-envelope"></i>
+                    <input class="form-control placeholder-no-fix {{ $errors->has('email') ? ' has-error' : '' }}" type="text" name="email" value="{{ $email or old('email')}}" />
                 </div>
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Send Password Reset Link</button>
-            </form>
-        </div>
-        <h2 class="sign-now">In the wrong place?
-            <span><a href="/login" class="no-decoration">Sign In</a></span></h2>
+                @if ($errors->has('email'))
+                    <span class="help-block">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+                @endif
+            </div>
+            <div class="form-actions">
+                <a href="{{url('/login')}}" type="button" id="back-btn" class="btn red btn-outline">Back </a>
+                <button type="submit" class="btn green pull-right"> Submit </button>
+            </div>
+
+        </form>
+        <!-- END FORGOT PASSWORD FORM -->
     </div>
+
 @endsection

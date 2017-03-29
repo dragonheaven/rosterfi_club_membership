@@ -7,13 +7,13 @@ Login page
   background-color: #666 !important; }
 
 .login .logo {
-  margin: 40px auto 20px auto;
+  margin: 60px auto 20px auto;
   padding: 15px;
   text-align: center; }
 
 .login .content {
   background: url(../img/bg-white-lock.png) repeat;
-  width: 700px;
+  max-width: 480px;
   margin: 0 auto;
   margin-bottom: 0px;
   padding: 30px;
@@ -24,50 +24,6 @@ Login page
   -ms-border-radius: 7px;
   -o-border-radius: 7px;
   border-radius: 7px; }
-
-.login .welcome-content {
-  background: url(../img/bg-white-lock.png) repeat;
-  max-width: 900px;  
-  margin: 0 auto;
-  margin-bottom: 0px;
-  padding: 70px;
-  padding-top: 20px;
-  padding-bottom: 15px;
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  -ms-border-radius: 7px;
-  -o-border-radius: 7px;
-  border-radius: 7px;
-  text-align: center;
-   }
-
-
-
-.o-or-divider:before,
-.o-or-divider:after {
-  width: 1px;
-  height: 130px;
-  margin: 2px auto;
-  content: "";
-  border-right: 2px solid rgba(255, 255, 255, 0.2);
-  display: block;
-}
-.welcome-content .block {
-  display: block;
-  height: 100%;
-  padding: 10px 70px;
-  border: solid 2px transparent;
-}
-
-.welcome-content .block:hover {
-  border: solid 2px transparent;
-  border-radius: 10px !important;
-  background: rgba(0, 0, 0, 0.1);
-}
-
-.welcome-content .block a {
-  text-decoration: none;
-}
 
 .login .content h3 {
   color: #eee; }
@@ -86,7 +42,6 @@ Login page
 
 .login .content .form-control {
   background-color: #fff; }
-
 
 
 
@@ -173,32 +128,8 @@ Login page
     margin-top: 10px; }
   .login .content {
     padding: 30px;
-    width: 222px; }
-
-  .login .content .rightbox {
-    display: none;
-  }    
-
+    width: 350px; }
   .login .content h3 {
     font-size: 22px; }
   .login .checkbox {
     font-size: 13px; } }
-
-@media screen and (max-width: 767px) {
-  .o-or-divider:before,
-  .o-or-divider:after {
-    width: 70px;
-    height: 1px;
-    margin: 30px 10px;
-    border-top: 2px solid rgba(255, 255, 255, 0.2);
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  .welcome-content .block {
-    display: block;
-    height: 100%;
-    padding: 10px;
-    border: solid 2px transparent;
-  }
-}

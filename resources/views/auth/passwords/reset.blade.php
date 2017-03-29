@@ -1,8 +1,11 @@
 @extends('layouts.access')
 
+@section('title')
+    Reset Password
+@endsection
+
 @section('content')
-<div class="container" id="login-form">
-    <div class="card card-container" style="height: auto">
+<div class="content" id="login-form">
         @if (session('status'))
             <div class="alert alert-success">
                 {{ session('status') }}
@@ -10,11 +13,10 @@
         @endif
         <h2>Reset Password</h2>
         <br>
-        <form class="form-signin" role="form" method="POST" action="{{ url('/password/reset') }}">
+        <form class="forget-form" role="form" method="POST" action="{{ url('/password/reset') }}">
             {{ csrf_field() }}
 
             <input type="hidden" name="token" value="{{ $token }}">
-
             <div class="form-group">
                 <input id="email" type="email" placeholder="Email Address" class="form-control{{ $errors->has('email') ? ' has-error' : '' }}" name="email" value="{{ $email or old('email') }}" autofocus>
 
@@ -47,6 +49,7 @@
 
             <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Reset Password</button>
         </form>
-    </div>
+
 </div>
 @endsection
+

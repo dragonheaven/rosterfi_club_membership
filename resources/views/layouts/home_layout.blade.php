@@ -26,7 +26,8 @@
 
 		<!-- Font Awesome CSS -->
 		<!-- <link href="/fonts/font-awesome/css/font-awesome.css" rel="stylesheet"> -->
-		<link href="/dash_assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+		{{--<link href="/dash_assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />--}}
+		<link rel="stylesheet" href="/home_assets/css/font-awesome.min.css">
 
 		<!-- Fontello CSS -->
 		<link href="/fonts/fontello/css/fontello.css" rel="stylesheet">
@@ -101,7 +102,7 @@
 										<div class="header-left clearfix" style="margin-left:50px">
 											<!-- logo -->
 											<div id="logo" class="logo">
-												<a href="/"><img id="logo_img" src="/img/easy_icon.png" alt="Rosterfi" style="height: 55px;"></a>
+												<a href="/"><img id="logo_img" src="/img/membership/membership3.png" alt="Rosterfi" style="display: inline-block;height: 55px;"><h4 style="display: inline-block"><strong>Rosterfi</strong></h4></a>
 											</div>
 										</div>
 										<!-- header-left end -->													
@@ -114,7 +115,9 @@
 											<!-- submenu start -->
 											<li><a href="/">Home</a></li>
 											<!-- submenu end -->
+											<li><a href="javascript:;">About Us</a></li>
 
+											@if(Auth::check())
 											<!-- submenu start -->
 											<li><a href="{{url('/myaccount')}}">My Account</a></li>
 											<!-- submenu end -->
@@ -126,7 +129,9 @@
 											<!-- submenu start -->
 											<li><a href="{{url('/configevent')}}">My Events</a></li>
 											<!-- submenu end -->
+											@endif
 
+											@if(Auth::guest())
 											<!-- submenu start -->
 											<li><a href="/login">Login</a></li>
 											<!-- submenu end -->
@@ -134,6 +139,27 @@
 											<!-- submenu start -->
 											<li><a href="/register">Register</a></li>
 											<!-- submenu end -->
+											@endif
+
+											@if(Auth::check())
+											<li>
+												<a class="dropdown-toggle" data-toggle="dropdown">
+													{{Auth::user()->first_name}} {{Auth::user()->last_name}}
+												</a>
+												<ul class="dropdown-menu">
+
+													<li>
+														<a href="{{url('/logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+															<i class="fa fa-power-off"></i>
+															<span>Logout</span>
+														</a>
+														<form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+															{{ csrf_field() }}
+														</form>
+													</li>
+												</ul>
+											</li>
+											@endif
 
 										</ul>
 										<!-- main-menu end -->      
