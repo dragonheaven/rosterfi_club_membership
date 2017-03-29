@@ -6,6 +6,13 @@
 
 @section('content')
     <div class="content">
+        @if(Session::has('message'))
+            <div class="alert alert-{{ Session::get('status') }} status-box">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                {{ Session::get('message') }}
+            </div>
+        @endif
+
         <!-- BEGIN LOGIN FORM -->
         <form class="login-form" action="{{url('/login')}}" method="post">
             {{ csrf_field() }}
@@ -64,11 +71,11 @@
             <div class="forget-password">
                 <h4>Forgot your password ?</h4>
                 <p> no worries, click
-                    <a href="{{url('/password/reset')}}" id="forget-password"> here </a> to reset your password. </p>
+                    <a href="{{url('/password/reset')}}" id="forget-password" style="color: #AFEEEE"> here </a> to reset your password. </p>
             </div>
             <div class="create-account">
                 <p> Don't have an account yet ?&nbsp;
-                    <a href="{{url('/register')}}" id="register-btn"> Create an account </a>
+                    <a href="{{url('/register')}}" id="register-btn" style="color: #AFEEEE"> Create an account </a>
                 </p>
             </div>
         </form>

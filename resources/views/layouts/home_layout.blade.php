@@ -11,7 +11,7 @@
 
 		<!-- Favicon -->
 		<!-- <link rel="shortcut png" href="/images/favicon.png"> -->
-		<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/img/membership/membership2.png">
 
 		
 		<!-- Web Fonts -->
@@ -118,9 +118,7 @@
 											<li><a href="javascript:;">About Us</a></li>
 
 											@if(Auth::check())
-											<!-- submenu start -->
-											<li><a href="{{url('/myaccount')}}">My Account</a></li>
-											<!-- submenu end -->
+
 
 											<!-- submenu start -->
 											<li><a href="{{url('/configclub')}}">Clubs</a></li>
@@ -147,6 +145,9 @@
 													{{Auth::user()->first_name}} {{Auth::user()->last_name}}
 												</a>
 												<ul class="dropdown-menu">
+													<!-- submenu start -->
+													<li><a href="{{url('/myaccount')}}">My Account</a></li>
+													<!-- submenu end -->
 
 													<li>
 														<a href="{{url('/logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

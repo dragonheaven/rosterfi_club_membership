@@ -198,12 +198,12 @@
             <div class="form-group">
                 <label>
                     <input type="checkbox" name="tnc" /> I agree to the
-                    <a href="javascript:;"> Terms of Service </a> and
-                    <a href="javascript:;"> Privacy Policy </a>
+                    <a href="javascript:;" style="color: #AFEEEE"> Terms of Service </a> and
+                    <a href="javascript:;" style="color: #AFEEEE"> Privacy Policy </a>
                 </label>
                 <div id="register_tnc_error"> </div>
             </div>
-            <a href="{{url('/login')}}">I already have a account</a>
+            <a href="{{url('/login')}}" style="color: #AFEEEE">I already have a account</a>
             <div class="form-actions">
                 <a href="{{url('/')}}" class="btn red btn-outline"> Home </a>
                 <button type="submit" id="register-submit-btn" class="btn green pull-right"> Sign Up </button>
